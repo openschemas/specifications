@@ -40,7 +40,7 @@ the repository here. </p>
       <img src="https://openschemas.github.io/assets/images/specs_tasks.png" alt="Open Schemas {{ spec.spec_info.property }} Github Tasks or Issues"></a>{% endif %}
       </td>
       <td class="spec_links">
-      <a href="{{spec.gh_folder }}" target="_blank">
+      <a href="{{ site.github.repository_url }}/tree/master/_specifications/{{ spec.name }}.html" target="_blank">
       <img src="https://openschemas.github.io/assets/images/spec_examples.png" alt="View Github">
       </a>
       </td>
