@@ -53,9 +53,7 @@ the repository here. </p>
 
 <h2>Types</h2>
 <p>We have found it necessary to propose some additional types to the Schema.org vocabulary. 
-    These are specified below and are expected to be pushed up to Schema.org once they have stabilised. 
-    These types are used as the generic base for some of the profile specifications, such as protein.
-    Again, working versions are published in the <a href="/drafts">drafts</a> page.</p>
+    These are specified below and are expected to be pushed up to Schema.org once they have stabilised.</p>
 
 <table class="bioschemas_spec_list" style="width: 100%; margin-left: auto; margin-right: auto; text-align: center;">
     <thead>
