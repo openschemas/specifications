@@ -20,7 +20,7 @@ the repository here. </p>
       <th>Name</th>
       <th style="text-align: center;">Use Cases</th>
       <th style="text-align: center;">Task &amp; Issues</th>
-      <th style="text-align: center;">Examples</th>
+      <th style="text-align: center;">Github</th>
       </tr>
       </thead>
       <tbody>
@@ -45,15 +45,10 @@ the repository here. </p>
             {% endif %}
           </td>
           <td class="spec_links">
-            {% if spec.spec_info.full_example == '' %}
             <a>
-            <img src="https://openschemas.github.io/assets/images/spec_examples.png" alt="View {{ spec.spec_info.property }} Examples" style="filter: grayscale(100%);">
-            </a>
-            {% else %}
             <a href="{{spec.spec_info.full_example}}" target="_blank">
-            <img src="https://openschemas.github.io/assets/images/spec_examples.png" alt="View {{ spec.spec_info.property }} Examples">
+            <img src="https://openschemas.github.io/assets/images/spec_examples.png" alt="View {{ spec.gh_folder }} Examples">
             </a>
-            {% endif %}
           </td>
       </tr>
       {% endfor %}
