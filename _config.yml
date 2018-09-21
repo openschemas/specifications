@@ -27,4 +27,4 @@ plugins:
 collections:
   specifications:
     output: true
-    permalink: /:collection/:path/
+    permalink: /:path/
