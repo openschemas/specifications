@@ -5,9 +5,9 @@ permalink: /
 ---
 <h1>OpenSchemas Specifications</h1>
 
-<p>This page contains drafts for an Openschemas specifications. Ongoing changes are published to the <a href="https://openschemas.github.io/specifications">official specifications </a> page. This page is updated with newly merged drafts from
-the repository here. </p>
-<p>Should you wish to contact the community to discuss our efforts please post an issue on <a href="https://www.github.com/openschemas/openschemas.github.io/issues" itemprop="email">the issues board</a>.</p>
+<p>This page contains a listing of Openschemas specifications. Should you wish to contact 
+the community to discuss an efforts, or to contribute a specification,
+ please post an issue on <a href="{{ site.repo }}/issues" itemprop="email">the issues board</a>.</p>
 
 <h2>Profiles</h2>
 
