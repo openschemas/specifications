@@ -27,29 +27,23 @@ the repository here. </p>
       {% assign prof_specs = site.specifications | where: 'spec_type', 'Profile'%}
       {% for spec in prof_specs %}
       <tr>
-          {% assign date_time = spec.spec_info.version_date %}
-          <th><a href="{{ site.github.url }}/specifications/{{ spec.name }}/" title="{{ spec.spec_info.subtitle }}">{{ spec.name }}</a><br />(v{{spec.spec_info.version}})<br />{{ date_time | date_to_long_string }}</th>
-          <td class="spec_links">
-            <a href="{{ spec.use_cases_url }}">
-            <img src="https://openschemas.github.io/assets/images/use_case_spec.png" alt="View {{ spec.spec_info.name }} Use Cases"></a>
-          </td>
-          <td class="spec_links">
-            {% if spec.gh_tasks == '' %}
-            <a>
-            <img src="https://openschemas.github.io/assets/images/specs_tasks.png" alt="{{ spec.spec_info.property }} Github Tasks or Issues" style="filter: grayscale(100%);">
-            </a>
-            {% else %}
-            <a href="{{ spec.gh_tasks }}" target="_blank">
-            <img src="https://openschemas.github.io/assets/images/specs_tasks.png" alt="Open Schemas {{ spec.spec_info.property }} Github Tasks or Issues">
-            </a>
-            {% endif %}
-          </td>
-          <td class="spec_links">
-            <a>
-            <a href="{{spec.spec_info.full_example}}" target="_blank">
-            <img src="https://openschemas.github.io/assets/images/spec_examples.png" alt="View {{ spec.gh_folder }} Examples">
-            </a>
-          </td>
+      {% assign date_time = spec.spec_info.version_date %}
+      <th><a href="{{ site.github.url }}/specifications/{{ spec.name }}/" title="{{ spec.spec_info.subtitle }}">{{ spec.name }}</a><br />(v{{spec.spec_info.version}})<br />{{ date_time | date_to_long_string }}</th>
+      <td class="spec_links">
+      <a href="{{ spec.use_cases_url }}">
+      <img src="https://openschemas.github.io/assets/images/use_case_spec.png" alt="View {{ spec.spec_info.name }} Use Cases"></a>
+      </td>
+      <td class="spec_links">
+      {% if spec.gh_tasks == '' %}
+      <a><img src="https://openschemas.github.io/assets/images/specs_tasks.png" alt="{{ spec.spec_info.property }} Github Tasks or Issues" style="filter: grayscale(100%);"></a>{% else %}
+      <a href="{{ spec.gh_tasks }}" target="_blank">
+      <img src="https://openschemas.github.io/assets/images/specs_tasks.png" alt="Open Schemas {{ spec.spec_info.property }} Github Tasks or Issues"></a>{% endif %}
+      </td>
+      <td class="spec_links">
+      <a href="{{spec.gh_folder }}" target="_blank">
+      <img src="https://openschemas.github.io/assets/images/spec_examples.png" alt="View Github">
+      </a>
+      </td>
       </tr>
       {% endfor %}
       </tbody>
