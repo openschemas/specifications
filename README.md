@@ -8,7 +8,7 @@ Hi friend! These are the openschemas specifications that render at
 ## How to Contribute
 Note that we are currently 
 [working on a validator](https://github.com/openschemas/openschemas-python/pull/7) 
-so that submissions are validated before any pull request is merged. Gotta catch those bugs! :bugs:
+so that submissions are validated before any pull request is merged. Gotta catch those bugs! :bug:
 Instructions below still hold true:
 
  - To **contribute a new specification**, use the [spec-template](https://www.github.com/openschemas/spec-template)
