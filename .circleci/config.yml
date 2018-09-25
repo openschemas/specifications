@@ -61,7 +61,7 @@ schematest: &schematest
             do
             echo "docker exec ob openschemas validate --infile /data/${infile}"
             docker exec ob openschemas validate --infile /data/${infile}
-        fi
+        done
         docker stop ob
 
 
