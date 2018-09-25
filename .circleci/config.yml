@@ -52,8 +52,8 @@ schematest: &schematest
         source ${BASH_ENV}
         cd /tmp/src
         echo "1. Starting OpenBases Container!"
-        echo "docker run --name ob  --entrypoint bash -dt ${OPENBASES_CONTAINER}"
-        docker run --name ob  --entrypoint bash -dt "${OPENBASES_CONTAINER}"
+        echo "docker run --name ob  --entrypoint bash -dt ${OPENSCHEMAS_CONTAINER}"
+        docker run --name ob  --entrypoint bash -dt "${OPENSCHEMAS_CONTAINER}"
         echo "2. Copying specification files for OpenBases schema..."
         echo "docker cp ./_specifications/. ob:/data"
         docker cp ./_specifications/. ob:/data
