@@ -1,0 +1,111 @@
+# Python CircleCI 2.0 configuration file
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+
+# Variables you can customize (and containers that are used)
+# OPENSCHEMAS_CONTAINER: is the container that will be built, see defaults
+# 
+
+################################################################################
+# Functions
+################################################################################
+
+# Defaults
+defaults: &defaults
+  docker:
+    - image: docker:18.01.0-ce-git
+  working_directory: /tmp/src
+
+# Installation
+install: &install
+    name: Install gzip, gettext, python3, gcc python3-dev, jq, linux-headers
+    command: |
+        apk add --no-cache pigz python3 gettext jq gcc python3-dev linux-headers \
+                           libffi-dev musl-dev openssl-dev
+
+# Environment
+schemaenv: &schemaenv
+    name: Define container and open bases names
+    command: |
+        # If not set, define various container names
+        if [ ! -n "${OPENSCHEMAS_CONTAINER:-}" ]; then
+            OPENSCHEMAS_CONTAINER="openschemas/openschemas"
+        fi
+        if [ ! -n "${OPENSCHEMAS_DOCKER_USER:-}" ]; then
+            OPENSCHEMAS_DOCKER_USER="openschemas"
+        fi
+        if [ ! -n "${CIRCLE_PR_REPONAME}" ]; then
+            REPO_NAME=openschemas/openschemas-python
+        else
+            REPO_NAME=${CIRCLE_PR_USERNAME}/${CIRCLE_PR_REPONAME}
+        fi
+        echo "Open Bases OpenSchema builder is ${SCHEMA_BUILDER}"
+        # export to bash environment
+        echo "export OPENSCHEMAS_CONTAINER=${OPENSCHEMAS_CONTAINER}" >> ${BASH_ENV}
+        echo "export OPENSCHEMAS_DOCKER_USER=${OPENSCHEMAS_DOCKER_USER}" >> ${BASH_ENV}
+        echo "export REPO_NAME=${REPO_NAME}" >> ${BASH_ENV}
+        cat ${BASH_ENV}
+
+
+schematest: &schematest
+    name: use openschemas/openschemas docker container to test specifications
+    command: |
+        source ${BASH_ENV}
+        cd /tmp/src
+        echo "1. Pulling OpenBases Container!"
+        echo "docker pull ${OPENSCHEMAS_CONTAINER}:latest"
+        docker pull ${OPENSCHEMAS_CONTAINER}:latest
+        echo "1. Starting OpenBases Container!"
+        echo "docker run --name ob  --entrypoint bash -dt ${OPENSCHEMAS_CONTAINER}"
+        docker run --name ob  --entrypoint bash -dt "${OPENSCHEMAS_CONTAINER}"
+        VERSION=$(docker exec ob openschemas --version)
+        echo "Openschemas version is ${VERSION}"
+        echo "2. Copying specification files for OpenBases schema..."
+        echo "docker cp ./_specifications/. ob:/data"
+        docker cp ./_specifications/. ob:/data
+        for infile in $(docker exec ob ls /data)
+            do
+            echo "docker exec ob openschemas validate --infile /data/${infile}"
+            docker exec ob openschemas validate --infile /data/${infile}
+        done
+        docker stop ob
+
+
+################################################################################
+# Jobs
+################################################################################
+
+
+version: 2
+jobs:
+
+  test:
+    <<: *defaults
+    steps:
+      - setup_remote_docker
+      - run: *schemaenv
+      - run: *install
+      - checkout
+      - run: *schematest
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - src
+
+
+################################################################################
+# Workflows
+################################################################################
+
+
+workflows:
+  version: 2
+  test_schemas:
+    jobs:
+      - test:
+          filters:
+            branches:
+              ignore: 
+                - /docs?/.*/
+                - gh-pages
+            tags:
+              only: /.*/
