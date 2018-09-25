@@ -51,9 +51,14 @@ schematest: &schematest
     command: |
         source ${BASH_ENV}
         cd /tmp/src
+        echo "1. Pulling OpenBases Container!"
+        echo "docker pull ${OPENSCHEMAS_CONTAINER}:latest"
+        docker pull ${OPENSCHEMAS_CONTAINER}:latest
         echo "1. Starting OpenBases Container!"
         echo "docker run --name ob  --entrypoint bash -dt ${OPENSCHEMAS_CONTAINER}"
         docker run --name ob  --entrypoint bash -dt "${OPENSCHEMAS_CONTAINER}"
+        VERSION=$(docker exec ob openschemas --version)
+        echo "Openschemas version is ${VERSION}"
         echo "2. Copying specification files for OpenBases schema..."
         echo "docker cp ./_specifications/. ob:/data"
         docker cp ./_specifications/. ob:/data
