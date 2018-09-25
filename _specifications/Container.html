@@ -9,7 +9,7 @@ hierarchy:
 - CreativeWork
 - SoftwareApplication
 mapping:
-- bsc_description: ''
+- bsc_description: An alias for the container.
   cardinality: MANY
   controlled_vocab: ''
   description: An alias for the item.
@@ -65,7 +65,8 @@ mapping:
   property: dateCreated
   type: ''
   type_url: ''
-- bsc_description: ''
+- bsc_description: The date on which the CreativeWork was most recently modified or when
+    the item's entry was modified within a DataFeed.
   cardinality: ONE
   controlled_vocab: ''
   description: The date on which the CreativeWork was most recently modified or when
@@ -156,7 +157,8 @@ mapping:
     concept labels or one of its synonyms.
   cardinality: MANY
   controlled_vocab: '[EDAM:Data](http://edamontology.org/data_0006)'
-  description: ''
+  description: The input format of the data. Must be one of the [EDAM:Data](http://edamontology.org/data_0006)
+    concept labels or one of its synonyms.
   example: '{ "@type": ["SoftwareApplication", "Tool"], "input": ["http://edamontology.org/data_2977",
     "http://edamontology.org/data_2976"] }'
   expected_types:
@@ -226,7 +228,7 @@ mapping:
     concept labels or one of its synonyms.
   cardinality: MANY
   controlled_vocab: '[EDAM:Data](http://edamontology.org/data_0006)'
-  description: ''
+  description: The output format of the data. Must be one of the [EDAM:Data](http://edamontology.org/data_0006) concept labels or one of its synonyms.
   example: '{ "@type": ["SoftwareApplication", "Tool"], "input": ["http://edamontology.org/data_1383",
     "http://edamontology.org/data_1384"] }'
   expected_types:
@@ -236,7 +238,7 @@ mapping:
   property: output
   type: external
   type_url: http://semanticscience.org/resource/SIO_000229
-- bsc_description: ''
+- bsc_description: The publisher of the container as a creative work
   cardinality: MANY
   controlled_vocab: ''
   description: The publisher of the creative work.
@@ -315,7 +317,7 @@ parent_type: SoftwareApplication
 spec_info:
   description: This Container profile specification presents a representation of a
     Container such as Docker or Singularity that is used in scientific compute.
-  full_example: https://github.com/openschemas/spec-container
+  full_example: https://www.github.com/openschemas/spec-container
   version: 0.0.1
   version_date: 20180921T131601
 spec_type: Profile
