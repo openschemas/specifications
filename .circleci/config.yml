@@ -105,6 +105,7 @@ workflows:
           filters:
             branches:
               ignore: 
+                - master
                 - /docs?/.*/
                 - gh-pages
             tags:
