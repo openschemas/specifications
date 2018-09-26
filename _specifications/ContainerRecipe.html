@@ -1,15 +1,16 @@
 ---
 description: This Container profile specification presents a representation of a Container
   such as Docker or Singularity that is used in scientific compute.
-edit_url: https://github.com/openschemas/specifications/tree/master/ContainerRecipe/specification.html
-gh_folder: https://github.com/openschemas/specifications/tree/master/ContainerRecipe
-gh_tasks: https://github.com/openschemas/specifications/labels/type%3A%20ContainerRecipe
+edit_url: https://github.com/openschemas/spec-container/blob/gh-pages/_specifications/ContainerRecipe.html
+gh_folder: https://github.com/openschemas/spec-container
+gh_tasks: https://github.com/openschemas/spec-container/labels/type%3A%20ContainerRecipe
+
 hierarchy:
 - Thing
 - CreativeWork
 - SoftwareApplication
 mapping:
-- bsc_description: ''
+- bsc_description: An alias for the item.
   cardinality: MANY
   controlled_vocab: ''
   description: An alias for the item.
@@ -107,7 +108,8 @@ mapping:
   property: dateCreated
   type: ''
   type_url: ''
-- bsc_description: ''
+- bsc_description: The date on which the CreativeWork was most recently modified or when
+    the item's entry was modified within a DataFeed.
   cardinality: ONE
   controlled_vocab: ''
   description: The date on which the CreativeWork was most recently modified or when
@@ -228,7 +230,8 @@ mapping:
     concept labels or one of its synonyms.
   cardinality: MANY
   controlled_vocab: '[EDAM:Data](http://edamontology.org/data_0006)'
-  description: ''
+  description: The input format of the data. Must be one of the [EDAM:Data](http://edamontology.org/data_0006)
+    concept labels or one of its synonyms.
   example: '{ "@type": ["SoftwareApplication", "Tool"], "input": ["http://edamontology.org/data_2977",
     "http://edamontology.org/data_2976"] }'
   expected_types:
@@ -296,7 +299,7 @@ mapping:
   property: license
   type: ''
   type_url: ''
-- bsc_description: ''
+- bsc_description: The name of the item.
   cardinality: ONE
   controlled_vocab: ''
   description: The name of the item.
@@ -326,7 +329,8 @@ mapping:
     concept labels or one of its synonyms.
   cardinality: MANY
   controlled_vocab: '[EDAM:Data](http://edamontology.org/data_0006)'
-  description: ''
+  description: The output format of the data. Must be one of the [EDAM:Data](http://edamontology.org/data_0006)
+    concept labels or one of its synonyms.
   example: '{ "@type": ["SoftwareApplication", "Tool"], "input": ["http://edamontology.org/data_1383",
     "http://edamontology.org/data_1384"] }'
   expected_types:
@@ -336,7 +340,7 @@ mapping:
   property: output
   type: external
   type_url: http://semanticscience.org/resource/SIO_000229
-- bsc_description: ''
+- bsc_description: The publisher of the creative work.
   cardinality: MANY
   controlled_vocab: ''
   description: The publisher of the creative work.
@@ -365,7 +369,10 @@ mapping:
   property: softwareHelp
   type: ''
   type_url: ''
-- bsc_description: ''
+- bsc_description: 'Component dependency requirements for application. This includes runtime
+    environments and shared libraries that are not included in the application distribution
+    package, but required to run the application (Examples: DirectX, Java or .NET
+    runtime).'
   cardinality: MANY
   controlled_vocab: ''
   description: 'Component dependency requirements for application. This includes runtime
@@ -415,7 +422,7 @@ parent_type: SoftwareApplication
 spec_info:
   description: This Container profile specification presents a representation of a
     Container such as Docker or Singularity that is used in scientific compute.
-  full_example: https://www.github.com/openschemas/specifications/tree/master/ContainerRecipe/examples/
+  full_example: https://www.github.com/openschemas/spec-container
   version: 0.0.1
   version_date: 20180926T073710
 spec_type: Profile
