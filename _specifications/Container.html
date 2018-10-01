@@ -153,21 +153,6 @@ mapping:
   property: identifier
   type: ''
   type_url: ''
-- bsc_description: The input format of the data. Must be one of the [EDAM:Data](http://edamontology.org/data_0006)
-    concept labels or one of its synonyms.
-  cardinality: MANY
-  controlled_vocab: '[EDAM:Data](http://edamontology.org/data_0006)'
-  description: The input format of the data. Must be one of the [EDAM:Data](http://edamontology.org/data_0006)
-    concept labels or one of its synonyms.
-  example: '{ "@type": ["SoftwareApplication", "Tool"], "input": ["http://edamontology.org/data_2977",
-    "http://edamontology.org/data_2976"] }'
-  expected_types:
-  - URL
-  marginality: Recommended
-  parent: Container
-  property: input
-  type: external
-  type_url: http://semanticscience.org/resource/SIO_000230
 - bsc_description: ''
   cardinality: ONE
   controlled_vocab: '[EDAM:Topic](http://edamontology.org/topic_0003)'
@@ -224,20 +209,6 @@ mapping:
   property: operatingSystem
   type: ''
   type_url: ''
-- bsc_description: The output format of the data. Must be one of the [EDAM:Data](http://edamontology.org/data_0006)
-    concept labels or one of its synonyms.
-  cardinality: MANY
-  controlled_vocab: '[EDAM:Data](http://edamontology.org/data_0006)'
-  description: The output format of the data. Must be one of the [EDAM:Data](http://edamontology.org/data_0006) concept labels or one of its synonyms.
-  example: '{ "@type": ["SoftwareApplication", "Tool"], "input": ["http://edamontology.org/data_1383",
-    "http://edamontology.org/data_1384"] }'
-  expected_types:
-  - URL
-  marginality: Recommended
-  parent: Container
-  property: output
-  type: external
-  type_url: http://semanticscience.org/resource/SIO_000229
 - bsc_description: The publisher of the container as a creative work
   cardinality: MANY
   controlled_vocab: ''
@@ -322,7 +293,7 @@ spec_info:
   version_date: 20180921T131601
 spec_type: Profile
 status: revision
-subtitle: Bioschemas specification describing a Container (e.g., Docker, Singularity)
+subtitle: Openschemas specification describing a Container (e.g., Docker, Singularity)
   used in Scientific Compute
 use_cases_url: https://www.github.com/openschemas/spec-container
 version: 0.0.1
