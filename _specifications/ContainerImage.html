@@ -7,7 +7,7 @@ gh_tasks: https://github.com/openschemas/specifications/labels/type%3A%20Contain
 hierarchy:
 - Thing
 mapping:
-- bsc_description: 'An alias for the item'
+- bsc_description: ''
   cardinality: MANY
   controlled_vocab: ''
   description: An alias for the item.
@@ -76,7 +76,7 @@ mapping:
   property: config
   type: ''
   type_url: ''
-- bsc_description: 'This descriptor property has additional restrictions for config.'
+- bsc_description: ''
   cardinality: ONE
   controlled_vocab: https://github.com/opencontainers/image-spec/blob/master/manifest.md
   description: This descriptor property has additional restrictions for config.
@@ -89,8 +89,7 @@ mapping:
   property: configMediaType
   type: ''
   type_url: ''
-- bsc_description: 'The date on which the CreativeWork was created or the item was added
-    to a DataFeed.'
+- bsc_description: ''
   cardinality: ONE
   controlled_vocab: ''
   description: The date on which the CreativeWork was created or the item was added
@@ -105,8 +104,7 @@ mapping:
   property: dateCreated
   type: ''
   type_url: ''
-- bsc_description: 'The date on which the CreativeWork was most recently modified or when
-    the item's entry was modified within a DataFeed.'
+- bsc_description: ''
   cardinality: ONE
   controlled_vocab: ''
   description: The date on which the CreativeWork was most recently modified or when
@@ -211,8 +209,7 @@ mapping:
     concept labels or one of its synonyms.
   cardinality: MANY
   controlled_vocab: '[EDAM:Data](http://edamontology.org/data_0006)'
-  description: 'The input format of the data. Must be one of the [EDAM:Data](http://edamontology.org/data_0006)
-    concept labels or one of its synonyms.'
+  description: 'The input format of the data.'
   example: '{ "@type": ["SoftwareApplication", "Tool"], "input": ["http://edamontology.org/data_2977",
     "http://edamontology.org/data_2976"] }'
   expected_types:
@@ -333,7 +330,7 @@ mapping:
     concept labels or one of its synonyms.
   cardinality: MANY
   controlled_vocab: '[EDAM:Data](http://edamontology.org/data_0006)'
-  description: ''
+  description: 'The output format of the data.'
   example: '{ "@type": ["SoftwareApplication", "Tool"], "input": ["http://edamontology.org/data_1383",
     "http://edamontology.org/data_1384"] }'
   expected_types:
