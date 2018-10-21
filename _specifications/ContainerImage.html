@@ -1,15 +1,13 @@
 ---
 description: This Container profile specification presents a representation of a Container
   such as Docker or Singularity that is used in scientific compute.
-edit_url: https://github.com/openschemas/spec-container/blob/gh-pages/_specifications/ContainerImage.html
-gh_folder: https://github.com/openschemas/spec-container
-gh_tasks: https://github.com/openschemas/spec-container/labels/type%3A%20ContainerImage
+edit_url: https://github.com/openschemas/specifications/tree/master/ContainerImage/specification.html
+gh_folder: https://github.com/openschemas/specifications/tree/master/ContainerImage
+gh_tasks: https://github.com/openschemas/specifications/labels/type%3A%20ContainerImage
 hierarchy:
 - Thing
-- CreativeWork
-- SoftwareApplication
 mapping:
-- bsc_description: 'An alias for the item.'
+- bsc_description: ''
   cardinality: MANY
   controlled_vocab: ''
   description: An alias for the item.
@@ -45,7 +43,7 @@ mapping:
   expected_types:
   - Text
   marginality: Optional
-  parent: SoftwareApplication
+  parent: ContainerImage
   property: applicationCategory
   type: ''
   type_url: ''
@@ -60,7 +58,7 @@ mapping:
   - CreativeWork
   - Text
   marginality: Recommended
-  parent: CreativeWork
+  parent: ContainerImage
   property: citation
   type: ''
   type_url: ''
@@ -91,8 +89,7 @@ mapping:
   property: configMediaType
   type: ''
   type_url: ''
-- bsc_description: 'The date on which the CreativeWork was created or the item was added
-    to a DataFeed.'
+- bsc_description: ''
   cardinality: ONE
   controlled_vocab: ''
   description: The date on which the CreativeWork was created or the item was added
@@ -103,7 +100,7 @@ mapping:
   - Date
   - DateTime
   marginality: Optional
-  parent: CreativeWork
+  parent: ContainerImage
   property: dateCreated
   type: ''
   type_url: ''
@@ -118,7 +115,7 @@ mapping:
   - Date
   - DateTime
   marginality: Optional
-  parent: CreativeWork
+  parent: ContainerImage
   property: dateModified
   type: ''
   type_url: ''
@@ -134,16 +131,17 @@ mapping:
   property: description
   type: ''
   type_url: ''
-- bsc_description: 'If the file can be downloaded, URL to download the binary.'
+- bsc_description: ''
   cardinality: MANY
   controlled_vocab: ''
-  description: If the file can be downloaded, URL to download the binary.
+  description: If the file can be downloaded, URL to download the binary. For containers
+    without an exposed wget url or similar, this can be the pull command.
   example: '{   "@type": ["SoftwareApplication", "Tool"],   "downloadURL": "https://github.com/sacdallago/cellmap"
     }'
   expected_types:
   - URL
   marginality: Optional
-  parent: SoftwareApplication
+  parent: ContainerImage
   property: downloadUrl
   type: ''
   type_url: ''
@@ -158,20 +156,20 @@ mapping:
   - Text
   - URL
   marginality: Minimum
-  parent: SoftwareApplication
+  parent: ContainerImage
   property: featureList
   type: ''
   type_url: ''
 - bsc_description: Used to describe tools included into suites/bundles/workflows.
   cardinality: MANY
   controlled_vocab: ''
-  description: Indicates an item or CreativeWork that is part of this item, or CreativeWork
-    (in some sense).
+  description: 'Indicates a CreativeWork that is (in some sense) a part of this CreativeWork.
+    Inverse property: isPartOf.'
   example: ''
   expected_types:
   - CreativeWork
   marginality: Optional
-  parent: CreativeWork
+  parent: ContainerImage
   property: hasPart
   type: ''
   type_url: ''
@@ -211,8 +209,7 @@ mapping:
     concept labels or one of its synonyms.
   cardinality: MANY
   controlled_vocab: '[EDAM:Data](http://edamontology.org/data_0006)'
-  description: 'The input format of the data. Must be one of the [EDAM:Data](http://edamontology.org/data_0006)
-    concept labels or one of its synonyms.'
+  description: ''
   example: '{ "@type": ["SoftwareApplication", "Tool"], "input": ["http://edamontology.org/data_2977",
     "http://edamontology.org/data_2976"] }'
   expected_types:
@@ -232,7 +229,7 @@ mapping:
   expected_types:
   - Text
   marginality: Optional
-  parent: CreativeWork
+  parent: ContainerImage
   property: keywords
   type: ''
   type_url: ''
@@ -282,7 +279,7 @@ mapping:
   - Text
   - URL
   marginality: Recommended
-  parent: CreativeWork
+  parent: ContainerImage
   property: license
   type: ''
   type_url: ''
@@ -325,7 +322,7 @@ mapping:
   expected_types:
   - Text
   marginality: Optional
-  parent: SoftwareApplication
+  parent: ContainerImage
   property: operatingSystem
   type: ''
   type_url: ''
@@ -333,8 +330,7 @@ mapping:
     concept labels or one of its synonyms.
   cardinality: MANY
   controlled_vocab: '[EDAM:Data](http://edamontology.org/data_0006)'
-  description: 'The output format of the data. Must be one of the [EDAM:Data](http://edamontology.org/data_0006)
-    concept labels or one of its synonyms.'
+  description: ''
   example: '{ "@type": ["SoftwareApplication", "Tool"], "input": ["http://edamontology.org/data_1383",
     "http://edamontology.org/data_1384"] }'
   expected_types:
@@ -344,7 +340,7 @@ mapping:
   property: output
   type: external
   type_url: http://semanticscience.org/resource/SIO_000229
-- bsc_description: 'The publisher of the creative work.'
+- bsc_description: ''
   cardinality: MANY
   controlled_vocab: ''
   description: The publisher of the creative work.
@@ -355,7 +351,7 @@ mapping:
   - Organization
   - Person
   marginality: Recommended
-  parent: CreativeWork
+  parent: ContainerImage
   property: publisher
   type: ''
   type_url: ''
@@ -365,16 +361,16 @@ mapping:
     MAY be removed in a future version of the specification.
   cardinality: ONE
   controlled_vocab: https://github.com/opencontainers/image-spec/blob/master/manifest.md
-  description: Indicates (by URL or string) a particular version of a schema used
-    in some CreativeWork. For example, a document could declare a schemaVersion using
-    an URL such as http://schema.org/version/2.0/ if precise indication of schema
-    version was required by some application.
+  description: This REQUIRED property specifies the image manifest schema version.
+    For this version of the specification, this MUST be 2 to ensure backward compatibility
+    with older versions of Docker. The value of this field will not change. This field
+    MAY be removed in a future version of the specification.
   example: ''
   expected_types:
   - Number
   - Text
   marginality: Recommended
-  parent: CreativeWork
+  parent: ContainerImage
   property: schemaVersion
   type: ''
   type_url: https://github.com/opencontainers/image-spec/blob/master/manifest.md
@@ -388,27 +384,24 @@ mapping:
   expected_types:
   - CreativeWork
   marginality: Optional
-  parent: SoftwareApplication
+  parent: ContainerImage
   property: softwareHelp
   type: ''
   type_url: ''
-- bsc_description: 'Component dependency requirements for application. This includes runtime
-    environments and shared libraries that are not included in the application distribution
-    package, but required to run the application (Examples: DirectX, Java or .NET
-    runtime).'
+- bsc_description: ''
   cardinality: MANY
   controlled_vocab: ''
   description: 'Component dependency requirements for application. This includes runtime
     environments and shared libraries that are not included in the application distribution
     package, but required to run the application (Examples: DirectX, Java or .NET
-    runtime).'
+    runtime). Supersedes requirements.'
   example: '{   "@type": ["SoftwareApplication", "Tool"],   "softwareRequirements":
     "JRE 8.0 or above" }'
   expected_types:
   - Text
   - URL
   marginality: Optional
-  parent: SoftwareApplication
+  parent: ContainerImage
   property: softwareRequirements
   type: ''
   type_url: ''
@@ -421,7 +414,7 @@ mapping:
   expected_types:
   - Text
   marginality: Minimum
-  parent: SoftwareApplication
+  parent: ContainerImage
   property: softwareVersion
   type: ''
   type_url: ''
@@ -441,13 +434,13 @@ mapping:
   type: ''
   type_url: ''
 name: ContainerImage
-parent_type: SoftwareApplication
+parent_type: Thing
 spec_info:
   description: This Container profile specification presents a representation of a
     Container such as Docker or Singularity that is used in scientific compute.
-  full_example: https://www.github.com/openschemas/spec-container
+  full_example: https://www.github.com/openschemas/specifications/tree/master/ContainerImage/examples/
   version: 0.0.1
-  version_date: 20180926T073710
+  version_date: 20181021T214745
 spec_type: Profile
 status: revision
 subtitle: Bioschemas specification describing a ContainerImage (e.g., Docker, Singularity)
